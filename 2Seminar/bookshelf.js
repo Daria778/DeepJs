@@ -1,8 +1,20 @@
-class bookshelf {
-    #books;
+class Bookshelf {
+    #books = [];
 
-    constructor() {
-        this.#books = [];
+    constructor(books) {
+        this.#books = books;
+        let count = 0;
+        this.#books.forEach(elem => {
+            this.#books.forEach(el => {
+                if (el === elem) {
+                    count += 1
+                    if (count > 1) {
+                        throw new Error("There are duplicates")
+                    }
+                }
+            })
+            count = 0;
+        })
     }
     addBook = (title) => {
         this.#books.push(title);
@@ -25,9 +37,5 @@ class bookshelf {
     }
 }
 
-let book = new bookshelf();
-book.addBook("lol")
-book.showAll()
-book.deliteBook("lol")
-book.showAll()
-book.hasBook("lol")
+const book = new Bookshelf(["1984", "Castle", "Master and Margarita", "Ward №6", "Secret Window"]);
+book.showAll();
