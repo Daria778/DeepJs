@@ -8,14 +8,11 @@ if (!localStorage.getItem(key)) {
 }
 const newData = (firstValue, secondValue) => {
     let k = JSON.parse(localStorage.getItem(key));
-    console.log(k);
     const obj = {
         id: k.length,
         name: firstValue,
         text: secondValue,
     }
-
-    console.log(obj);
     k.push(obj);
     localStorage.setItem(key, JSON.stringify(k));
 }
@@ -29,6 +26,6 @@ formEl.addEventListener("submit", (e) => {
     let inputElName = document.getElementById("nameOfProduct");
     let inputElText = document.getElementById("review");
     newReview(inputElName.value, inputElText.value);
-
+    location.reload()
 });
 
